@@ -16,7 +16,7 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "bookdetails")
-@SequenceGenerator(name="seq3", initialValue=101, allocationSize=100)
+@SequenceGenerator(name="seq3", initialValue=10001, allocationSize=100)
 public class BookDetails implements Serializable{
 
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seq3")

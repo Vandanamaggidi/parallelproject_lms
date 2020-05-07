@@ -1,17 +1,30 @@
 package com.capgemini.librarymanagementsystem.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
+@SuppressWarnings("serial")
 public class BookDetails implements Serializable {
 
-	private int bookId;
+	private int bookId = (int)Math.random();;
 	private String bookName;
 	private String bookCategory;
 	private String authorName;
 	private String publisherName;
-//	private Date issuedDate;
-//	private Date returnDate;
+
+
+	public BookDetails(int bookId, String bookName, String bookCategory, String authorName, String publisherName) {
+		
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.authorName = authorName;
+		this.bookCategory = bookCategory;
+		this.publisherName = publisherName;
+	}
+
+	public BookDetails() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getBookId() {
 		return bookId;
@@ -53,18 +66,6 @@ public class BookDetails implements Serializable {
 		this.publisherName = publisherName;
 	}
 
-//	public Date getIssuedDate() {
-//		return issuedDate;
-//	}
-//	public void setIssuedDate(Date issuedDate) {
-//		this.issuedDate = issuedDate;
-//	}
-//	public Date getReturnDate() {
-//		return returnDate;
-//	}
-//	public void setReturnDate(Date returnDate) {
-//		this.returnDate = returnDate;
-//	}
 	@Override
 	public String toString() {
 		return String.format("%-10s %-10s %-13s %-15s %s", bookId, bookName, bookCategory, authorName, publisherName);

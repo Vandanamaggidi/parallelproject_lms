@@ -5,11 +5,25 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Admin implements Serializable {
 
-	private int adminId ;
+	private int adminId = (int)Math.random(); ;
 	private String name ;
 	private String email ;
 	private String password ;
 	private long mobileNo;
+
+	public Admin(int adminId, String name, String email, String password, long mobileNo) {
+		
+		super();
+		this.adminId = adminId;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.mobileNo = mobileNo;
+	}
+
+	public Admin() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getAdminId() {
 		return adminId;

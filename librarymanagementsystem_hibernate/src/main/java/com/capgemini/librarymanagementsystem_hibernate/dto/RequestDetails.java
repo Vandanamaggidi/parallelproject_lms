@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "requestDetails")
-@SequenceGenerator(name = "seq2", initialValue = 101, allocationSize = 100)
+@SequenceGenerator(name = "seq2", initialValue = 10001, allocationSize = 100)
 public class RequestDetails implements Serializable {
 
 	@Id

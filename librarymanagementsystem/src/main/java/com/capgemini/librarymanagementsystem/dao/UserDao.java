@@ -1,6 +1,5 @@
 package com.capgemini.librarymanagementsystem.dao;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.capgemini.librarymanagementsystem.dto.BookDetails;
@@ -19,10 +18,10 @@ public interface UserDao {
 
 	List<BookDetails> searchBookBycategory(String bookCategory);
 
-	LinkedList<BookDetails> searchBookByTitle(String bookName);
+	List<BookDetails> searchBookByTitle(String bookName);
 
-	LinkedList<BookDetails> searchBookByAuthor(String authorName);
+	List<BookDetails> searchBookByAuthor(String authorName);
 
-	LinkedList<BookDetails> getBooksInfo();
+	List<BookDetails> getBooksInfo();
 
 }

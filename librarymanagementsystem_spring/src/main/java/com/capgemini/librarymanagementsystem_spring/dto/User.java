@@ -20,7 +20,7 @@ import lombok.Data;
 @Entity
 @Table(name = "user")
 @JsonRootName("User_Data")
-@SequenceGenerator(name="seq4", initialValue=100001, allocationSize=100)
+@SequenceGenerator(name="seq4", initialValue=10001, allocationSize=100)
 public class User implements Serializable {
 
 	
@@ -34,7 +34,6 @@ public class User implements Serializable {
 	@Column
 	private String lastName;
 	@Column(unique = true)
-	@JsonProperty("User_Email")
 	private String email;
 	@Column
 	private String password;

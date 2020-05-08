@@ -1,6 +1,5 @@
 package com.capgemini.librarymanagementsystem.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.capgemini.librarymanagementsystem.dto.BookDetails;
@@ -17,13 +16,13 @@ public interface UserService {
 
 	public Request bookReturn(User user, BookDetails bookDetails);
 
-	LinkedList<BookDetails> searchBookByTitle(String bookName);
+	List<BookDetails> searchBookByTitle(String bookName);
 
-	LinkedList<BookDetails> searchBookByAuthor(String authorName);
+	List<BookDetails> searchBookByAuthor(String authorName);
 
 	List<BookDetails> searchBookBycategory(String bookCategory);
 
-	LinkedList<BookDetails> getBooksInfo();
-	// LinkedList<Integer> getBookIds();
+	List<BookDetails> getBooksInfo();
+	
 
 }

@@ -146,7 +146,7 @@ public class AdminDaoImplements implements AdminDao {
 	}
 
 	@Override
-	public LinkedList<BookDetails> getBooksInfo() {
+	public List<BookDetails> getBooksInfo() {
 
 		return LibraryDB.bookDetails;
 

@@ -1,7 +1,6 @@
 package com.capgemini.librarymanagementsystem.controller;
 
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -392,7 +391,7 @@ public class LibrarySupport {
 												break;
 
 											case 7:
-												LinkedList<BookDetails> info = service.getBooksInfo();
+												List<BookDetails> info = service.getBooksInfo();
 												for (BookDetails bookBean : info) {
 													System.out.println(String.format("%-10s %-10s %-13s %-15s %s", "BookId",
 															"BookName", "BookCategory", "AuthorName", "PublisherName"));
@@ -721,7 +720,7 @@ public class LibrarySupport {
 												break;
 
 											case 4:
-												LinkedList<BookDetails> info = service1.getBooksInfo();
+												List<BookDetails> info = service1.getBooksInfo();
 												System.out.println(String.format("%-10s %-10s %-13s %-15s %s", "BookId",
 														"BookName", "BookCategory", "AuthorName", "PublisherName"));
 												for (BookDetails bookBean : info) {

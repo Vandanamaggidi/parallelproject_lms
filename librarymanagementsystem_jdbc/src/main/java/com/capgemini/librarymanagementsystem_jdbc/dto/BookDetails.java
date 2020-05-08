@@ -1,7 +1,6 @@
 package com.capgemini.librarymanagementsystem_jdbc.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @SuppressWarnings("serial")
 public class BookDetails implements Serializable{
@@ -13,21 +12,6 @@ public class BookDetails implements Serializable{
 	private int copies;
 	private String bookCategory;
 	
-	private Date issueDate;
-	private Date returnDate;
-	
-	public Date getIssueDate() {
-		return issueDate;
-	}
-	public void setIssueDate(Date issueDate) {
-		this.issueDate = issueDate;
-	}
-	public Date getReturnDate() {
-		return returnDate;
-	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
 	public String getBookCategory() {
 		return bookCategory;
 	}

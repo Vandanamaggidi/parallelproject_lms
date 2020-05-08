@@ -3,6 +3,7 @@ package com.capgemini.librarymanagementsystem.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@SuppressWarnings("serial")
 public class Request implements Serializable {
 
 	private BookDetails bookDetails;

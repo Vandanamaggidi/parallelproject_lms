@@ -1,7 +1,6 @@
 package com.capgemini.librarymanagementsystem_jdbc.controller;
 
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +11,8 @@ import com.capgemini.librarymanagementsystem_jdbc.dto.RequestDetails;
 import com.capgemini.librarymanagementsystem_jdbc.dto.User;
 import com.capgemini.librarymanagementsystem_jdbc.exception.LMSException;
 import com.capgemini.librarymanagementsystem_jdbc.factory.LibraryFactory;
+import com.capgemini.librarymanagementsystem_jdbc.service.AdminService;
+import com.capgemini.librarymanagementsystem_jdbc.service.AdminUserService;
 import com.capgemini.librarymanagementsystem_jdbc.service.UserService;
 import com.capgemini.librarymanagementsystem_jdbc.validation.LibraryValidation;
 
@@ -31,6 +32,9 @@ public class LibrarySupport {
 
 		boolean loginStatus = true;
 		LibraryValidation validation = new LibraryValidation();
+		AdminService service2 = LibraryFactory.getAdminService();
+		UserService service1 = LibraryFactory.getUserService();
+		AdminUserService service3 = LibraryFactory.getAdminUserService();
 		do {
 			try (Scanner scanner = new Scanner(System.in);) {
 				System.out.println("Press 1 to Register");
@@ -38,7 +42,7 @@ public class LibrarySupport {
 				System.out.println("Press 3 to EXIT");
 				do {
 					try {
-						UserService service1 = LibraryFactory.getUserService();
+					
 						int choice = scanner.nextInt();
 						switch (choice) {
 						case 1:
@@ -154,7 +158,7 @@ public class LibrarySupport {
 							ai.setMobileNo(regMobile);
 							ai.setRole(regRole);
 							try {
-								boolean check = service1.registerUser(ai);
+								boolean check = service3.registerUser(ai);
 								if (check) {
 									System.out.println("Registered");
 								} else {
@@ -170,7 +174,7 @@ public class LibrarySupport {
 							System.out.println("enter password");
 							String password = scanner.next();
 							try {
-								User loginInfo = service1.authUser(email, password);
+								User loginInfo = service3.authUser(email, password);
 								if (loginInfo.getEmail().equals(email) && loginInfo.getPassword().equals(password)) {
 									System.out.println("Logged In");
 								}
@@ -218,7 +222,7 @@ public class LibrarySupport {
 												bi.setPublisherName(addPublisher);
 												// bi.setCopies(addCopies);
 												try {
-													boolean check2 = service1.addBook(bi);
+													boolean check2 = service2.addBook(bi);
 													if (check2) {
 														System.out.println(
 																"-----------------------------------------------");
@@ -237,7 +241,7 @@ public class LibrarySupport {
 												System.out.println("enter id");
 												int removeId = scanner.nextInt();
 												try {
-													boolean check3 = service1.removeBook(removeId);
+													boolean check3 = service2.removeBook(removeId);
 													if (check3) {
 														System.out.println(
 																"-----------------------------------------------");
@@ -258,7 +262,7 @@ public class LibrarySupport {
 												System.out.println("Enter User Id");
 												int userId = scanner.nextInt();
 												try {
-													boolean check4 = service1.bookIssue(issueId, userId);
+													boolean check4 = service2.bookIssue(issueId, userId);
 													if (check4) {
 														System.out.println(
 																"-----------------------------------------------");
@@ -276,7 +280,7 @@ public class LibrarySupport {
 												System.out.println("Search the book by the Author Name:");
 												String author = scanner.next();
 												try {
-													List<BookDetails> bookauthor = service1.searchBookByAuthor(author);
+													List<BookDetails> bookauthor = service3.searchBookByAuthor(author);
 
 													System.out.println(
 															"<--------------------------------------------------------------------->");
@@ -302,7 +306,7 @@ public class LibrarySupport {
 												System.out.println("  Search the book by the Book_Title :");
 												String btitle = scanner.next();
 												try {
-													List<BookDetails> booktitle = service1.searchBookByTitle(btitle);
+													List<BookDetails> booktitle = service3.searchBookByTitle(btitle);
 													System.out.println(
 															"<--------------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-13s %-15s %s",
@@ -325,7 +329,7 @@ public class LibrarySupport {
 
 											case 6:
 												try {
-													List<BookDetails> info = service1.getBooksInfo();
+													List<BookDetails> info = service3.getBooksInfo();
 													System.out.println(
 															"<--------------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-13s %-15s %s",
@@ -353,7 +357,7 @@ public class LibrarySupport {
 												try {
 													BookDetails bean5 = new BookDetails();
 													bean5.setBookName(bcategory);
-													List<BookDetails> bookCategory1 = service1
+													List<BookDetails> bookCategory1 = service3
 															.searchBookByTitle(bcategory);
 													System.out.println(
 															"<--------------------------------------------------------------------->");
@@ -381,7 +385,7 @@ public class LibrarySupport {
 												bean2.setBookId(bid);
 												bean2.setBookName(updatedBookName);
 												try {
-													boolean updated = service1.updateBook(bean2);
+													boolean updated = service2.updateBook(bean2);
 													if (updated) {
 														System.out.println(
 																"-----------------------------------------------");
@@ -421,7 +425,7 @@ public class LibrarySupport {
 											case 10:
 												System.out.println(" Requests received are:");
 												try {
-													List<RequestDetails> requests = service1.showRequests();
+													List<RequestDetails> requests = service2.showRequests();
 													System.out.println(
 															"<--------------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-10s %s", "UserId",
@@ -443,7 +447,7 @@ public class LibrarySupport {
 											case 11:
 												System.out.println("Issued Books are:");
 												try {
-													List<BookIssue> issuedBooks = service1.showIssuedBooks();
+													List<BookIssue> issuedBooks = service2.showIssuedBooks();
 													System.out.println(
 															"<--------------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-10s %s", "BookId",
@@ -465,7 +469,7 @@ public class LibrarySupport {
 											case 12:
 												System.out.println("Users are:");
 												try {
-													List<User> users = service1.showUsers();
+													List<User> users = service2.showUsers();
 													System.out.println(
 															"<--------------------------------------------------------------------->");
 													System.out.println(
@@ -494,7 +498,7 @@ public class LibrarySupport {
 												String new_Password = scanner.next();
 												String user_Role = loginInfo.getRole();
 												try {
-													boolean updated = service1.updatePassword(email_Id, old_Password,
+													boolean updated = service3.updatePassword(email_Id, old_Password,
 															new_Password, user_Role);
 													if (updated) {
 														System.out.println(
@@ -599,7 +603,7 @@ public class LibrarySupport {
 												System.out.println("Search the book by the Author Name :");
 												String author = scanner.next();
 												try {
-													List<BookDetails> bookauthor = service1.searchBookByAuthor(author);
+													List<BookDetails> bookauthor = service3.searchBookByAuthor(author);
 													System.out.println(
 															"<----------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-13s %-15s %s",
@@ -626,7 +630,7 @@ public class LibrarySupport {
 												String btitle = scanner.next();
 
 												try {
-													List<BookDetails> booktitle = service1.searchBookByTitle(btitle);
+													List<BookDetails> booktitle = service3.searchBookByTitle(btitle);
 													System.out.println(
 															"<----------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-13s %-15s %s",
@@ -654,7 +658,7 @@ public class LibrarySupport {
 												try {
 													BookDetails bean5 = new BookDetails();
 													bean5.setBookName(bcategory);
-													List<BookDetails> bookCategory1 = service1
+													List<BookDetails> bookCategory1 = service3
 															.searchBookByTitle(bcategory);
 													System.out.println(
 															"<----------------------------------------------------------------->");
@@ -675,7 +679,7 @@ public class LibrarySupport {
 												break;
 											case 6:
 												try {
-													LinkedList<BookDetails> info = service1.getBooksInfo();
+													List<BookDetails> info = service3.getBooksInfo();
 													System.out.println(
 															"<----------------------------------------------------------------->");
 													System.out.println(String.format("%-10s %-10s %-13s %-15s %s",
@@ -733,7 +737,7 @@ public class LibrarySupport {
 												String new_Password = scanner.next();
 												String user_Role = loginInfo.getRole();
 												try {
-													boolean updated = service1.updatePassword(email_Id, old_Password,
+													boolean updated = service3.updatePassword(email_Id, old_Password,
 															new_Password, user_Role);
 													if (updated) {
 														System.out.println(

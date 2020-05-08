@@ -1,6 +1,5 @@
 package com.capgemini.librarymanagementsystem.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.capgemini.librarymanagementsystem.dto.Admin;
@@ -22,11 +21,11 @@ public interface AdminService {
 
 	List<BookDetails> searchBookBycategory(String bookCategory);
 
-	LinkedList<BookDetails> searchBookByTitle(String bookName);
+	List<BookDetails> searchBookByTitle(String bookName);
 
-	LinkedList<BookDetails> searchBookByAuthor(String bookAuthor);
+	List<BookDetails> searchBookByAuthor(String bookAuthor);
 
-	LinkedList<BookDetails> getBooksInfo();
+	List<BookDetails> getBooksInfo();
 
 	List<User> showUsers();
 

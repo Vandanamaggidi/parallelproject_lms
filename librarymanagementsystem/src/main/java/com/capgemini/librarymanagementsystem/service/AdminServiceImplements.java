@@ -1,6 +1,5 @@
 package com.capgemini.librarymanagementsystem.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.capgemini.librarymanagementsystem.dao.AdminDao;
@@ -51,19 +50,19 @@ public class AdminServiceImplements implements AdminService {
 	}
 
 	@Override
-	public LinkedList<BookDetails> searchBookByTitle(String bookName) {
+	public List<BookDetails> searchBookByTitle(String bookName) {
 		// TODO Auto-generated method stub
 		return dao.searchBookByTitle(bookName);
 	}
 
 	@Override
-	public LinkedList<BookDetails> searchBookByAuthor(String bookAuthor) {
+	public List<BookDetails> searchBookByAuthor(String bookAuthor) {
 		// TODO Auto-generated method stub
 		return dao.searchBookByAuthor(bookAuthor);
 	}
 
 	@Override
-	public LinkedList<BookDetails> getBooksInfo() {
+	public List<BookDetails> getBooksInfo() {
 		// TODO Auto-generated method stub
 		return dao.getBooksInfo();
 	}

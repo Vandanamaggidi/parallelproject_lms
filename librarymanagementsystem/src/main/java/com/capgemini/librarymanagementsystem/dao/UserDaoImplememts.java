@@ -156,7 +156,7 @@ public class UserDaoImplememts implements UserDao {
 	}
 
 	@Override
-	public LinkedList<BookDetails> getBooksInfo() {
+	public List<BookDetails> getBooksInfo() {
 
 		return LibraryDB.bookDetails;
 

@@ -1,9 +1,7 @@
 package com.capgemini.librarymanagementsystem.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import com.capgemini.librarymanagementsystem.dao.AdminDao;
 import com.capgemini.librarymanagementsystem.dao.UserDao;
 import com.capgemini.librarymanagementsystem.dto.BookDetails;
 import com.capgemini.librarymanagementsystem.dto.Request;
@@ -39,13 +37,13 @@ public class UserServiceImplements implements UserService {
 	}
 
 	@Override
-	public LinkedList<BookDetails> searchBookByTitle(String bookName) {
+	public List<BookDetails> searchBookByTitle(String bookName) {
 		// TODO Auto-generated method stub
 		return dao.searchBookByTitle(bookName);
 	}
 
 	@Override
-	public LinkedList<BookDetails> searchBookByAuthor(String authorName) {
+	public List<BookDetails> searchBookByAuthor(String authorName) {
 		// TODO Auto-generated method stub
 		return dao.searchBookByAuthor(authorName);
 	}
@@ -57,7 +55,7 @@ public class UserServiceImplements implements UserService {
 	}
 
 	@Override
-	public LinkedList<BookDetails> getBooksInfo() {
+	public List<BookDetails> getBooksInfo() {
 		// TODO Auto-generated method stub
 		return dao.getBooksInfo();
 	}

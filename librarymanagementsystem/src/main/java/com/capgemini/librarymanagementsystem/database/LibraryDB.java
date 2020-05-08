@@ -1,6 +1,7 @@
 package com.capgemini.librarymanagementsystem.database;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.capgemini.librarymanagementsystem.dto.Admin;
 import com.capgemini.librarymanagementsystem.dto.BookDetails;
@@ -9,10 +10,10 @@ import com.capgemini.librarymanagementsystem.dto.User;
 
 public class LibraryDB {
 
-	public static final LinkedList<BookDetails> bookDetails = new LinkedList<BookDetails>();
-	public static final LinkedList<User> users = new LinkedList<User>();
-	public static final LinkedList<Admin> admins = new LinkedList<Admin>();
-	public static final LinkedList<Request> REQUEST = new LinkedList<Request>();
+	public static final List<BookDetails> bookDetails = new ArrayList<BookDetails>();
+	public static final List<User> users = new ArrayList<User>();
+	public static final List<Admin> admins = new ArrayList<Admin>();
+	public static final List<Request> REQUEST = new ArrayList<Request>();
 
 	public static void dupData() {
 		
